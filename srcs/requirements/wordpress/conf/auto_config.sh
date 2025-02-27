@@ -12,13 +12,13 @@
 # USER1_EMAIL="${USER1_EMAIL:-user1@exemple.com}"
 # USER1_PASS="${USER1_PASS:-user1pass}"
 
-# echo "wait de MariaDB..."
-# while ! nc -z mariadb 3306; do
-#     sleep 1
-# done
-# echo "MariaDB est prêt"
+echo "wait de MariaDB..."
+while ! nc -z mariadb 3306; do
+    sleep 1
+done
+echo "MariaDB est prêt"
 
-sleep 10
+# sleep 10
 
 # if ! command -v wp &> /dev/null; then
 # 	echo "erreur : WP n est pas installe" >&2
@@ -60,6 +60,7 @@ sleep 10
 # 		--path="/var/www/wordpress" >> /log.txt 
 	
 # fi
+echo "test ICI ICI ICI ICI"
 if [ ! -d /run/php ]; then
 	mkdir -p /run/php
 	chown -R www-data:www-data /run/php
@@ -69,5 +70,6 @@ if [ ! -f "/usr/sbin/php-fpm82" ]; then
 	echo "erreur : php-fpm non trouve" >&2
 	exit 1
 fi
+sleep 2
 # exec /usr/sbin/php-fpm82 -F 2>&1 | tee /var/log/php-fpm.log
 # exec php-fpm82 -F

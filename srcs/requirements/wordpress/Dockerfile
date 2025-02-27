@@ -22,13 +22,18 @@ RUN			apk add --no-cache \
 			wget \
 			mariadb-client
 
-RUN	id www-data || adduser -D -u 82 -G www-data www-data 
+RUN	id www-data || adduser -S -G www-data www-data && \
+	mkdir -p /var/log/php82 && \
+	touch /var/log/php82/error.log && \
+	chown -R www-data:www-data /var/log/php82 && \
+	chmod -R 755 /var/log/php82
+
 RUN	wget https://fr.wordpress.org/wordpress-6.7.2-fr_FR.tar.gz -P /var/www
 
 
 RUN	cd /var/www && tar -xzf wordpress-6.7.2-fr_FR.tar.gz && rm wordpress-6.7.2-fr_FR.tar.gz
 
-RUN	chown -R www-data:www-data /etc/php82 /var/www/wordpress
+RUN	chown -R www-data:www-data /var/www/wordpress
 RUN	chmod -R 755 /var/www/wordpress /etc/php82
 COPY	conf/www.conf	/etc/php82/php-fpm.d/www.conf
 
@@ -40,7 +45,8 @@ COPY conf/auto_config.sh auto_config.sh
 
 RUN chmod +x auto_config.sh
 
+RUN ./auto_config.sh
 # EXPOSE 9000
 #ajout user ici
 
-ENTRYPOINT ["/auto_config.sh"]
+CMD ["php-fpm82", "-F"]
