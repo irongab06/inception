@@ -21,6 +21,7 @@ RUN			apk add --no-cache \
 			php82-gd \
 			wget \
 			mariadb-client
+
 RUN	id www-data || adduser -D -u 82 -G www-data www-data 
 RUN	wget https://fr.wordpress.org/wordpress-6.7.2-fr_FR.tar.gz -P /var/www
 
@@ -39,9 +40,7 @@ COPY conf/auto_config.sh auto_config.sh
 
 RUN chmod +x auto_config.sh
 
-EXPOSE 9000
+# EXPOSE 9000
 #ajout user ici
-
-USER www-data
 
 ENTRYPOINT ["/auto_config.sh"]
