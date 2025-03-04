@@ -1,0 +1,12 @@
+[server]
+
+[mysqld]
+skip-networking=0
+
+[galera]
+
+[embedded]
+
+[mariadb]
+
+[mariadb-10.5]

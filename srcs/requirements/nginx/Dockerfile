@@ -12,6 +12,7 @@ RUN apk update 	&& apk add --no-cache nginx curl vim openssl && \
 	 chown -R www-data:www-data /var/www/wordpress
 
 COPY /conf/nginx.conf /etc/nginx/nginx.conf
+COPY /conf/mime.types /etc/nginx/mime.types
 
 # EXPOSE 443:443
 
