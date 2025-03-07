@@ -45,6 +45,19 @@ services:
     expose:
       - "9000"
 
+  portfolio:
+    container_name: portfolio
+    volumes:
+    - portfolio:/var/www/html/portfolio
+    networks:
+      - inception
+    build:
+      context: requirements/portfolio
+      dockerfile: Dockerfile
+    restart: on-failure
+    expose:
+      - "9000"
+
 volumes:
   wordpress:
     driver: local
@@ -58,6 +71,12 @@ volumes:
       type: 'none'
       o: 'bind'
       device: '/home/gacavali/data/mariadb'
+  portfolio:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '/home/gacavali/data/portfolio'
 
 networks:
   inception:
