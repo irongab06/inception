@@ -1,5 +1,5 @@
 # Nom du fichier de configuration docker-compose
-COMPOSE_FILE = docker-compose.yml
+COMPOSE_FILE = srcs/docker-compose.yml
 
 # Nom du projet (peut être personnalisé)
 PROJECT_NAME = inception
@@ -38,15 +38,13 @@ stop:
 
 # Supprime les containers mais garde les volumes
  down:
-	$(DOCKER_COMPOSE) down
-
-# Supprime tout : containers, volumes et images non utilisées
-clean:
-	$(DOCKER_COMPOSE) down -v
 	docker system prune -af --volumes
 	docker network prune -f
 	docker volume prune -f
 	sudo rm -fr $(DATA_URL)
+	$(DOCKER_COMPOSE) down
+
+
 # Affiche les logs des containers
 logs:
 	$(DOCKER_COMPOSE) logs -f
