@@ -4,7 +4,7 @@ services:
     networks:
       - inception
     build:
-      context: requirements/mariadb
+      context: mariadb
       dockerfile: Dockerfile
     env_file: .env
     volumes:
@@ -23,7 +23,7 @@ services:
     depends_on:
       - wordpress
     build:
-      context: requirements/nginx
+      context: nginx
       dockerfile: Dockerfile
     env_file: .env
     ports:
@@ -38,7 +38,7 @@ services:
     networks:
       - inception
     build:
-      context: requirements/wordpress
+      context: wordpress
       dockerfile: Dockerfile
     depends_on:
       - mariadb
@@ -53,7 +53,7 @@ services:
     networks:
       - inception
     build:
-      context: requirements/adminer
+      context: adminer
       dockerfile: Dockerfile
     depends_on:
       - mariadb
@@ -67,7 +67,7 @@ services:
     networks:
       - inception
     build:
-      context: requirements/portfolio
+      context: portfolio
       dockerfile: Dockerfile
     restart: on-failure
     expose:

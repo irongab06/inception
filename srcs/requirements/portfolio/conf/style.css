@@ -1,0 +1,26 @@
+body
+{
+	background-image: url(ironman.jpg);
+}
+
+div#block
+{
+	background-color: rgba(95, 131, 131, 0.465);
+	border: 1px solid #000;
+	border-radius: 8px;
+	font-variant: small-caps;
+	color: rgb(237, 241, 245);
+	text-shadow: 4px 4px 7px #09435b;
+}
+
+.profile img
+{
+	display: block; /* Nécessaire pour que margin: auto fonctionne */
+    margin: 0 auto;
+	border-radius: 50%; /* Rend l’image circulaire */
+    border: 2px solid rgb(31, 101, 121); /* Ajoute une bordure blanche de 3 pixels */
+    width: 150px; /* Ajuste la taille de l’image */
+    height: 150px; /* Assure que l’image est carrée pour un cercle parfait */
+    object-fit: cover;
+	box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
